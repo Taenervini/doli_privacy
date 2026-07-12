@@ -18,7 +18,7 @@
   table { width:100%; border-collapse:collapse; margin:1em 0; font-size:.94rem; display:block; overflow-x:auto; }
   th,td { border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
   th { background:#faf5ee; }
-  ul { padding-left:1.2em; }
+  ul,ol { padding-left:1.2em; }
   a { color:var(--accent); word-break:break-all; }
   .toggle { position:sticky; top:0; background:var(--bg); padding:12px 0; margin:-32px 0 0; border-bottom:1px solid var(--line); z-index:1; }
   .toggle button { font:inherit; border:1px solid var(--line); background:#fff; color:var(--fg);
@@ -39,32 +39,56 @@
   <!-- ENGLISH -->
   <section id="en" class="active">
     <h1>Doli — Privacy Policy</h1>
-    <p class="meta">Effective date: July 6, 2026 · Last updated: July 9, 2026</p>
+    <p class="meta">Effective date: July 6, 2026 · Last updated: July 2026 (effective with the sync update)</p>
     <p>Doli (“the App”) respects your personal and health information and complies with applicable data-protection laws. This policy explains, transparently, what information the App handles and how.</p>
 
-    <h2>1. Core principle — all your data stays on your device</h2>
-    <p><strong>The App does not transmit or collect any of your personal health information to any external server.</strong> Everything you enter (fasting records, weight, diet-injection logs, and so on) is <strong>stored only on your own device</strong>. No one — including the developer — can access it.</p>
+    <h2>1. Core principle — on-device by default, sync only if you choose it</h2>
+    <p><strong>Unless you sign in, the App does not transmit or collect any of your personal health information to any external server.</strong> Everything you enter (fasting records, weight, diet-injection logs, and so on) is, by default, <strong>stored only on your own device</strong>.</p>
     <ul>
-      <li>The App’s core features work <strong>without any sign-up</strong>.</li>
-      <li>Your health, fasting, and weight data live only on your device, with <strong>no cloud backup</strong>.</li>
-      <li>Google Sign-In is <strong>optional</strong>; even if you use it, your email is stored only on your device (never sent to any third party — see Section 3).</li>
+      <li>The App’s core features work <strong>without any sign-up or sign-in</strong>.</li>
+      <li><strong>If you do not sign in</strong>, your health, fasting, and weight data live only on your device with no cloud backup, and no one — including the developer — can access them.</li>
+      <li><strong>Cloud sync is 100% optional.</strong> Your data is stored in the cloud <strong>only if you explicitly sign in with your Google account</strong> (see Section 3).</li>
     </ul>
-    <p>Uninstalling the App permanently deletes all data stored on your device; it cannot be recovered.</p>
+    <p>If you are not signed in, uninstalling the App permanently deletes all data stored on your device; it cannot be recovered.</p>
 
     <h2>2. Information the App handles</h2>
-    <p>The following is entered by you or stored on your device to make features work. <strong>All of the items below are stored only locally, on your device.</strong></p>
+    <p>The following is entered by you or stored to make features work. <strong>If you are not signed in, all of the items below are stored only locally, on your device; they are also stored in the cloud only when you are signed in.</strong></p>
     <table>
       <tr><th>Category</th><th>Items</th><th>Storage</th></tr>
-      <tr><td>Fasting records</td><td>Fast start/end times, fasting duration</td><td>On device</td></tr>
-      <tr><td>Body info (optional)</td><td>Weight, height, age, sex</td><td>On device</td></tr>
-      <tr><td>Health management (optional)</td><td>Diet-injection (GLP-1) logs</td><td>On device</td></tr>
-      <tr><td>Account (optional)</td><td>Email address (when using Google Sign-In)</td><td>On device</td></tr>
-      <tr><td>Game progress</td><td>Gear, items, gold, dungeon progress, character level</td><td>On device</td></tr>
-      <tr><td>App settings</td><td>Language, units (kg/lbs), purchase status</td><td>On device</td></tr>
+      <tr><td>Fasting records</td><td>Fast start/end times, fasting duration</td><td>On device (+ cloud when signed in)</td></tr>
+      <tr><td>Body info (optional)</td><td>Weight, height, age, sex, activity level</td><td>On device (+ cloud when signed in)</td></tr>
+      <tr><td>Health management (optional)</td><td>Diet-injection (GLP-1) logs</td><td>On device (+ cloud when signed in)</td></tr>
+      <tr><td>Account (optional)</td><td>Email address, user ID (uid) — with Google Sign-In</td><td>On device + Firebase Authentication</td></tr>
+      <tr><td>Game progress</td><td>Gear, items, gold, dungeon progress, character level</td><td>On device (+ cloud when signed in)</td></tr>
+      <tr><td>App settings</td><td>Language, units (kg/lbs), character name, dark mode, purchase status</td><td>On device (+ cloud when signed in)</td></tr>
     </table>
-    <p>Weight and diet-injection logs may constitute <strong>sensitive (health) information</strong> under data-protection law. The App protects them by keeping them only on your device and never collecting them on a server. Entering this information is entirely optional; you can use the App’s core features without it.</p>
+    <p>Weight, diet-injection logs, and fasting records may constitute <strong>sensitive (health) information</strong> under data-protection law. For signed-out users, the App protects them by keeping them only on your device and never collecting them on a server. For signed-in users, they are processed as described in Section 3, on the legal basis of <strong>your consent, given through your explicit act of signing in</strong>. Entering this information is entirely optional; you can use the App’s core features without it.</p>
 
-    <h2>3. Third-party services and automatically processed information</h2>
+    <h2>3. Cloud sync (optional — only with Google Sign-In)</h2>
+    <p>When you sign in with your Google account, the following data is stored in the developer’s Firebase (Google Cloud) <strong>Cloud Firestore</strong> database, tied to your account (uid):</p>
+    <ul>
+      <li>Fasting records (start/end times)</li>
+      <li>Weight entries</li>
+      <li>Diet-injection (GLP-1) logs</li>
+      <li>Profile (sex, age, height, weight, activity level)</li>
+      <li>Game progress (gear, gold, level)</li>
+      <li>App settings (language, units, character name, dark mode)</li>
+    </ul>
+    <h3>a. Purpose</h3>
+    <p><strong>Cross-device sync and restoring your data after reinstalling the App</strong> — this is the only use. Your data is <strong>never sold and never used for advertising.</strong> The ad SDK (AdMob) never receives any of your health data.</p>
+    <h3>b. Legal basis for sensitive data</h3>
+    <p>Weight, injection logs, and fasting records are sensitive (health) information. They are stored in the cloud only on the basis of <strong>your explicit act of choosing to sign in with Google (consent)</strong>. If you do not sign in, no health data ever leaves your device.</p>
+    <h3>c. Security</h3>
+    <ul>
+      <li>Data is <strong>encrypted in transit (HTTPS/TLS)</strong> and <strong>encrypted at rest</strong> (Google Cloud default encryption).</li>
+      <li>Firestore Security Rules restrict access so that <strong>only the account owner can access their own data</strong>.</li>
+    </ul>
+    <h3>d. Third-party processor</h3>
+    <p>Cloud storage and authentication are handled by <strong>Google LLC</strong> (Firebase Authentication, Cloud Firestore), acting solely as a data processor on the developer’s behalf. Firebase privacy: <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a></p>
+    <h3>e. Retention</h3>
+    <p>Cloud data is kept <strong>while your account is linked</strong>. See Section 6 (Account &amp; Data Deletion) for how to delete it. <strong>Signing out stops syncing</strong>, but the copy already in the cloud is kept until you delete it (so it can restore your data if you sign in again).</p>
+
+    <h2>4. Third-party services and automatically processed information</h2>
     <p>The App uses the third-party services below. In the course of using them, some information may be processed by each provider.</p>
     <h3>a. Advertising (Google AdMob)</h3>
     <p>The App uses Google AdMob to show ads on the free version. To serve and measure ads, AdMob may collect device information such as an advertising identifier (Advertising ID).</p>
@@ -72,35 +96,44 @@
       <li>Google’s data practices: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
       <li>You can reset your advertising ID or limit personalized ads in your device settings.</li>
       <li><strong>Purchasing Premium (ad removal) stops ads and the related data collection.</strong></li>
+      <li><strong>AdMob never receives any of your health data (fasting, weight, or injection records).</strong></li>
     </ul>
     <h3>b. Google Sign-In (optional)</h3>
-    <p>Only if you choose to sign in, the App uses Google Sign-In and receives your <strong>email address</strong>. This email is <strong>stored only on your device</strong> to show your signed-in status and is not sent to the developer’s servers or any third party. Sign-in is optional, and signing out within the App immediately deletes the stored email. The Google Sign-In process itself is governed by Google’s Privacy Policy (<a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>).</p>
+    <p>Only if you choose to sign in, the App uses Google Sign-In and Firebase Authentication and receives your <strong>email address and user ID (uid)</strong>. This information is used <strong>to authenticate you and to key your cloud data to your account</strong>. Sign-in is optional; signing out stops syncing (see Sections 3 and 6 for what happens to the cloud copy). The Google Sign-In process itself is governed by Google’s Privacy Policy (<a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>).</p>
     <h3>c. In-app purchases (Google Play Billing)</h3>
     <p>Premium purchases are processed through Google Play Billing. Payment details (such as card numbers) are never collected or stored by the App; they are handled entirely by Google.</p>
     <h3>d. Health Connect (optional)</h3>
-    <p>Only if you choose to, the App may request permission to <strong>read</strong> weight data from Health Connect on your device. This data is used only for on-device processing and is never transmitted externally. You can revoke the permission at any time in your device settings.</p>
+    <p>Only if you choose to, the App may request permission to <strong>read</strong> weight data from Health Connect on your device. Weight imported this way is saved as a weight entry in the App and, if you are signed in, may sync like any other weight entry. You can revoke the permission at any time in your device settings.</p>
 
-    <h2>4. Permissions the App requests</h2>
+    <h2>5. Permissions the App requests</h2>
     <table>
       <tr><th>Permission</th><th>Purpose</th><th>Required?</th></tr>
-      <tr><td>Internet</td><td>Display ads</td><td>Free version</td></tr>
-            <tr><td>Health Connect (read weight)</td><td>Auto-import weight</td><td>Optional</td></tr>
+      <tr><td>Internet</td><td>Display ads, cloud sync (when signed in)</td><td>Free version</td></tr>
+      <tr><td>Health Connect (read weight)</td><td>Auto-import weight</td><td>Optional</td></tr>
     </table>
     <p>You can use the App’s core features without granting the optional permissions.</p>
 
-    <h2>5. Retention and deletion</h2>
-    <p>Because the App does not collect information on any server, there is no separate retention or deletion process. You can delete data stored on your device instantly by <strong>using the reset feature in the App or uninstalling the App</strong>.</p>
+    <h2 id="deletion-en">6. Account &amp; Data Deletion (retention and deletion)</h2>
+    <h3>a. Signed-out users</h3>
+    <p>No information is collected on any server, so there is no separate retention or deletion process. You can delete data stored on your device instantly by <strong>using the reset feature in the App or uninstalling the App</strong>.</p>
+    <h3>b. Signed-in users — how to delete your account and cloud data</h3>
+    <ol>
+      <li><strong>In the App (recommended):</strong> Go to <strong>Settings → “Delete account &amp; data”</strong>. This <strong>immediately deletes</strong> your cloud data stored in Firestore and your Firebase account.</li>
+      <li><strong>By email:</strong> If you have already uninstalled the App or cannot use the in-app option, email <a href="mailto:taeminkim93@gmail.com">taeminkim93@gmail.com</a> with the Google account email you used to sign in, and we will delete your account and cloud data.</li>
+      <li><strong>Signing out is different:</strong> signing out only stops syncing; the cloud copy is kept until you delete it using method 1 or 2 above.</li>
+    </ol>
+    <p>Deleted cloud data cannot be recovered. Local data on your device can be deleted separately via the in-app reset or by uninstalling the App.</p>
 
-    <h2>6. Children’s privacy</h2>
+    <h2>7. Children’s privacy</h2>
     <p>The App is not directed to children under 14 and does not knowingly collect children’s personal information. Fasting is not recommended for growing children or adolescents.</p>
 
-    <h2>7. Your rights</h2>
-    <p>Because all data resides only on your device, you have full control over your information. You can view, edit, and delete your data within the App at any time.</p>
+    <h2>8. Your rights</h2>
+    <p>You have full control over your information. You can view, edit, and delete your data within the App at any time, and if you are signed in you can delete your cloud data and account at any time using the methods in Section 6. You can also change whether you use sync (whether you are signed in) at any time.</p>
 
-    <h2>8. Changes to this policy</h2>
+    <h2>9. Changes to this policy</h2>
     <p>This policy may be revised in response to changes in law or App features. We will announce any changes through the App or the store listing.</p>
 
-    <h2>9. Contact</h2>
+    <h2>10. Contact</h2>
     <ul>
       <li>Developer: TaeminKim (Taenervini studio)</li>
       <li>Email: <a href="mailto:taeminkim93@gmail.com">taeminkim93@gmail.com</a></li>
@@ -113,32 +146,56 @@
   <!-- KOREAN -->
   <section id="ko">
     <h1>돌리(Doli) 개인정보 처리방침</h1>
-    <p class="meta">시행일: 2026년 7월 6일 · 최종 수정일: 2026년 7월 9일</p>
+    <p class="meta">시행일: 2026년 7월 6일 · 최종 수정일: 2026년 7월 (동기화 업데이트와 함께 적용)</p>
     <p>돌리(이하 “본 앱”)는 이용자의 개인정보와 건강 정보를 소중히 여기며, 「개인정보 보호법」 및 관련 법령을 준수합니다. 본 방침은 본 앱이 어떤 정보를 어떻게 다루는지 투명하게 안내합니다.</p>
 
-    <h2>1. 핵심 원칙 — 모든 데이터는 기기 안에만</h2>
-    <p><strong>본 앱은 이용자의 개인 건강 정보를 외부 서버로 전송하거나 수집하지 않습니다.</strong> 이용자가 입력하는 모든 정보(단식 기록, 체중, 다이어트 주사 투여 기록 등)는 <strong>오직 이용자의 기기 내부에만 저장</strong>됩니다. 개발자를 포함한 그 누구도 이 정보에 접근할 수 없습니다.</p>
+    <h2>1. 핵심 원칙 — 기본은 기기 안에만, 동기화는 이용자의 선택</h2>
+    <p><strong>본 앱은 로그인하지 않는 한 이용자의 개인 건강 정보를 외부 서버로 전송하거나 수집하지 않습니다.</strong> 이용자가 입력하는 모든 정보(단식 기록, 체중, 다이어트 주사 투여 기록 등)는 기본적으로 <strong>오직 이용자의 기기 내부에만 저장</strong>됩니다.</p>
     <ul>
-      <li>앱의 핵심 기능은 <strong>회원가입 없이</strong> 이용할 수 있습니다.</li>
-      <li>건강·단식·체중 데이터는 <strong>클라우드 백업 없이</strong> 기기 안에만 있습니다.</li>
-      <li>Google 로그인은 <strong>선택 사항</strong>이며, 이용 시에도 이메일은 기기 안에만 저장됩니다(제3자에 전송 없음 — 3장 참고).</li>
+      <li>앱의 핵심 기능은 <strong>회원가입·로그인 없이</strong> 이용할 수 있습니다.</li>
+      <li><strong>로그인하지 않으면</strong> 건강·단식·체중 데이터는 클라우드 백업 없이 기기 안에만 있으며, 개발자를 포함한 그 누구도 이 정보에 접근할 수 없습니다.</li>
+      <li><strong>클라우드 동기화는 100% 선택 사항</strong>입니다. 이용자가 Google 계정으로 <strong>직접 로그인한 경우에만</strong> 데이터가 클라우드에 저장됩니다(3장 참고).</li>
     </ul>
-    <p>앱을 삭제하면 기기에 저장된 모든 데이터도 함께 삭제되며, 복구할 수 없습니다.</p>
+    <p>로그인하지 않은 상태에서 앱을 삭제하면 기기에 저장된 모든 데이터도 함께 삭제되며, 복구할 수 없습니다.</p>
 
     <h2>2. 앱이 다루는 정보</h2>
-    <p>이용자가 직접 입력하거나 앱 기능 이용을 위해 기기에 저장되는 정보는 다음과 같습니다. <strong>아래 정보는 모두 기기 내부(로컬)에만 저장됩니다.</strong></p>
+    <p>이용자가 직접 입력하거나 앱 기능 이용을 위해 저장되는 정보는 다음과 같습니다. <strong>로그인하지 않은 경우 아래 정보는 모두 기기 내부(로컬)에만 저장되며, 로그인한 경우에만 클라우드에도 함께 저장됩니다.</strong></p>
     <table>
       <tr><th>구분</th><th>항목</th><th>저장 위치</th></tr>
-      <tr><td>단식 기록</td><td>단식 시작/종료 시각, 단식 시간</td><td>기기 내부</td></tr>
-      <tr><td>신체 정보(선택)</td><td>체중, 키, 나이, 성별</td><td>기기 내부</td></tr>
-      <tr><td>건강 관리(선택)</td><td>다이어트 주사 투여 기록</td><td>기기 내부</td></tr>
-      <tr><td>계정(선택)</td><td>이메일 주소(Google 로그인 시)</td><td>기기 내부</td></tr>
-      <tr><td>게임 진행</td><td>장비·아이템·골드·던전 진행·캐릭터 레벨</td><td>기기 내부</td></tr>
-      <tr><td>앱 설정</td><td>언어, 단위(kg/lbs), 구매 상태</td><td>기기 내부</td></tr>
+      <tr><td>단식 기록</td><td>단식 시작/종료 시각, 단식 시간</td><td>기기 내부 (+ 로그인 시 클라우드)</td></tr>
+      <tr><td>신체 정보(선택)</td><td>체중, 키, 나이, 성별, 활동량</td><td>기기 내부 (+ 로그인 시 클라우드)</td></tr>
+      <tr><td>건강 관리(선택)</td><td>다이어트 주사(GLP-1) 투여 기록</td><td>기기 내부 (+ 로그인 시 클라우드)</td></tr>
+      <tr><td>계정(선택)</td><td>이메일 주소, 사용자 ID(uid) — Google 로그인 시</td><td>기기 내부 + Firebase 인증</td></tr>
+      <tr><td>게임 진행</td><td>장비·아이템·골드·던전 진행·캐릭터 레벨</td><td>기기 내부 (+ 로그인 시 클라우드)</td></tr>
+      <tr><td>앱 설정</td><td>언어, 단위(kg/lbs), 캐릭터 이름, 다크 모드, 구매 상태</td><td>기기 내부 (+ 로그인 시 클라우드)</td></tr>
     </table>
-    <p>체중·다이어트 주사 기록 등은 「개인정보 보호법」상 <strong>민감정보(건강 정보)</strong>에 해당하며, 본 앱은 이를 서버로 수집하지 않고 기기 내에만 보관하는 방식으로 보호합니다. 해당 정보 입력은 전적으로 이용자의 선택이며, 입력하지 않아도 앱의 기본 기능을 이용할 수 있습니다.</p>
+    <p>체중·다이어트 주사 기록·단식 기록 등은 「개인정보 보호법」상 <strong>민감정보(건강 정보)</strong>에 해당합니다. 본 앱은 이를 로그인하지 않은 이용자에 대해서는 서버로 수집하지 않고 기기 내에만 보관하며, 로그인한 이용자에 대해서는 <strong>이용자의 명시적 로그인 행위를 통한 동의</strong>를 법적 근거로 하여 3장의 방식으로 안전하게 처리합니다. 해당 정보 입력은 전적으로 이용자의 선택이며, 입력하지 않아도 앱의 기본 기능을 이용할 수 있습니다.</p>
 
-    <h2>3. 제3자 서비스 및 자동 수집 정보</h2>
+    <h2>3. 클라우드 동기화 (선택 — Google 로그인 시에만)</h2>
+    <p>이용자가 Google 계정으로 로그인하면, 아래 데이터가 개발자의 Firebase(Google Cloud) <strong>Cloud Firestore</strong> 데이터베이스에 이용자의 계정(uid)에 연결되어 저장됩니다.</p>
+    <ul>
+      <li>단식 기록(시작/종료 시각)</li>
+      <li>체중 기록</li>
+      <li>다이어트 주사(GLP-1) 투여 기록</li>
+      <li>프로필(성별·나이·키·체중·활동량)</li>
+      <li>게임 진행(장비·골드·레벨)</li>
+      <li>앱 설정(언어, 단위, 캐릭터 이름, 다크 모드)</li>
+    </ul>
+    <h3>가. 수집·이용 목적</h3>
+    <p><strong>기기 간 동기화 및 앱 재설치 후 데이터 복원</strong> — 이 목적으로만 사용합니다. 그 외의 용도로 사용하지 않으며, <strong>판매하지 않고, 광고에 사용하지 않습니다.</strong> 광고 SDK(AdMob)는 건강 데이터를 일절 전달받지 않습니다.</p>
+    <h3>나. 민감정보 처리의 법적 근거</h3>
+    <p>체중·주사 기록·단식 기록은 민감정보(건강 정보)입니다. 클라우드 저장은 이용자가 <strong>직접 Google 로그인을 선택하는 명시적 행위(동의)</strong>를 근거로만 이루어지며, 로그인하지 않으면 어떤 건강 정보도 기기를 벗어나지 않습니다.</p>
+    <h3>다. 보안</h3>
+    <ul>
+      <li>데이터는 <strong>전송 중 암호화(HTTPS/TLS)</strong>되고, <strong>저장 시에도 암호화</strong>(Google Cloud 기본 저장 암호화)됩니다.</li>
+      <li>Firestore 보안 규칙(Security Rules)에 의해 <strong>본인 계정만 자신의 데이터에 접근</strong>할 수 있습니다.</li>
+    </ul>
+    <h3>라. 수탁 처리자(제3자 처리 위탁)</h3>
+    <p>클라우드 저장·인증은 <strong>Google LLC</strong>(Firebase Authentication, Cloud Firestore)가 처리합니다. Google은 개발자를 위한 수탁 처리자로서만 데이터를 처리합니다. Firebase의 개인정보 보호: <a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a></p>
+    <h3>마. 보유 기간</h3>
+    <p>클라우드 데이터는 <strong>계정이 연결되어 있는 동안</strong> 보관됩니다. 삭제 방법은 6장(계정 및 데이터 삭제)을 참고하세요. <strong>로그아웃하면 동기화가 중단</strong>되지만, 클라우드에 저장된 사본은 삭제하기 전까지 유지됩니다(다시 로그인하면 복원에 사용).</p>
+
+    <h2>4. 제3자 서비스 및 자동 수집 정보</h2>
     <p>본 앱은 아래의 제3자 서비스를 이용하며, 이 과정에서 일부 정보가 각 서비스 제공자에 의해 처리될 수 있습니다.</p>
     <h3>가. 광고 (Google AdMob)</h3>
     <p>무료 이용자에게 광고를 제공하기 위해 Google AdMob을 사용합니다. AdMob은 광고 제공 및 측정을 위해 광고 식별자(Advertising ID) 등 기기 정보를 수집할 수 있습니다.</p>
@@ -146,35 +203,44 @@
       <li>Google의 데이터 처리: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
       <li>이용자는 기기 설정에서 광고 식별자를 초기화하거나 맞춤 광고를 제한할 수 있습니다.</li>
       <li><strong>프리미엄(광고 제거)을 구매하면 광고 및 관련 데이터 수집이 이루어지지 않습니다.</strong></li>
+      <li><strong>AdMob은 이용자의 건강 데이터(단식·체중·주사 기록)를 일절 전달받지 않습니다.</strong></li>
     </ul>
     <h3>나. Google 로그인 (선택)</h3>
-    <p>이용자가 로그인을 선택하는 경우에 한해 Google 로그인(Google Sign-In)을 사용하며, 이때 이용자의 <strong>이메일 주소</strong>를 제공받습니다. 이 이메일은 로그인 상태 표시를 위해 <strong>기기 내부에만 저장</strong>되며, 개발자의 서버나 제3자에게 전송되지 않습니다. 로그인은 선택 사항이고, 앱 내 로그아웃 시 저장된 이메일은 즉시 삭제됩니다. Google 로그인 과정 자체는 Google의 개인정보처리방침(<a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>)에 따릅니다.</p>
+    <p>이용자가 로그인을 선택하는 경우에 한해 Google 로그인(Google Sign-In)과 Firebase Authentication을 사용하며, 이때 이용자의 <strong>이메일 주소와 사용자 ID(uid)</strong>를 제공받습니다. 이 정보는 <strong>본인 인증과 클라우드 데이터를 이용자 계정에 연결(키 지정)하는 용도</strong>로 사용됩니다. 로그인은 선택 사항이며, 로그아웃하면 동기화가 중단됩니다(클라우드 사본 처리는 3장·6장 참고). Google 로그인 과정 자체는 Google의 개인정보처리방침(<a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>)에 따릅니다.</p>
     <h3>다. 인앱 결제 (Google Play 결제)</h3>
     <p>프리미엄 기능 구매는 Google Play 결제 시스템을 통해 처리됩니다. 결제 정보(카드번호 등)는 본 앱이 수집하거나 저장하지 않으며, 전적으로 Google에 의해 처리됩니다.</p>
     <h3>라. Health Connect (선택)</h3>
-    <p>이용자가 원하는 경우에 한해, 기기의 Health Connect에서 체중 정보를 <strong>읽어오기(read)</strong> 위한 권한을 요청할 수 있습니다. 이 정보는 기기 내부 처리에만 사용되며 외부로 전송되지 않습니다. 권한은 이용자가 언제든지 기기 설정에서 철회할 수 있습니다.</p>
+    <p>이용자가 원하는 경우에 한해, 기기의 Health Connect에서 체중 정보를 <strong>읽어오기(read)</strong> 위한 권한을 요청할 수 있습니다. 이렇게 읽어온 체중은 앱의 체중 기록으로 저장되며, 로그인한 경우 다른 체중 기록과 동일하게 동기화될 수 있습니다. 권한은 이용자가 언제든지 기기 설정에서 철회할 수 있습니다.</p>
 
-    <h2>4. 앱이 요청하는 권한</h2>
+    <h2>5. 앱이 요청하는 권한</h2>
     <table>
       <tr><th>권한</th><th>사용 목적</th><th>필수 여부</th></tr>
-      <tr><td>인터넷</td><td>광고 표시</td><td>무료 버전</td></tr>
-            <tr><td>Health Connect(체중 읽기)</td><td>체중 자동 불러오기</td><td>선택</td></tr>
+      <tr><td>인터넷</td><td>광고 표시, 클라우드 동기화(로그인 시)</td><td>무료 버전</td></tr>
+      <tr><td>Health Connect(체중 읽기)</td><td>체중 자동 불러오기</td><td>선택</td></tr>
     </table>
     <p>필수가 아닌 권한은 허용하지 않아도 앱의 핵심 기능을 이용할 수 있습니다.</p>
 
-    <h2>5. 개인정보의 보유 및 파기</h2>
-    <p>본 앱은 정보를 서버에 수집하지 않으므로, 별도의 보유·파기 절차가 없습니다. 기기에 저장된 데이터는 이용자가 <strong>앱 내 초기화 기능을 사용하거나 앱을 삭제</strong>함으로써 즉시 파기할 수 있습니다.</p>
+    <h2 id="deletion-ko">6. 계정 및 데이터 삭제 (보유 및 파기)</h2>
+    <h3>가. 로그인하지 않은 이용자</h3>
+    <p>정보가 서버에 수집되지 않으므로 별도의 보유·파기 절차가 없습니다. 기기에 저장된 데이터는 <strong>앱 내 초기화 기능을 사용하거나 앱을 삭제</strong>함으로써 즉시 파기할 수 있습니다.</p>
+    <h3>나. 로그인한 이용자 — 계정 및 클라우드 데이터 삭제 방법</h3>
+    <ol>
+      <li><strong>앱 내 삭제(권장):</strong> 앱의 <strong>설정 → “계정 및 데이터 삭제”</strong>를 실행하면 Firestore에 저장된 이용자의 클라우드 데이터와 Firebase 계정이 <strong>즉시 삭제</strong>됩니다.</li>
+      <li><strong>이메일 요청:</strong> 앱을 이미 삭제했거나 앱 내 삭제가 어려운 경우, <a href="mailto:taeminkim93@gmail.com">taeminkim93@gmail.com</a> 으로 로그인에 사용한 Google 계정 이메일을 알려 주시면 계정과 클라우드 데이터를 삭제해 드립니다.</li>
+      <li><strong>로그아웃과의 차이:</strong> 로그아웃은 동기화만 중단하며, 클라우드 사본은 위 1·2의 방법으로 삭제하기 전까지 유지됩니다.</li>
+    </ol>
+    <p>계정 삭제 시 클라우드 데이터는 복구할 수 없습니다. 기기 내 로컬 데이터는 앱 초기화 또는 앱 삭제로 별도 파기할 수 있습니다.</p>
 
-    <h2>6. 아동의 개인정보</h2>
+    <h2>7. 아동의 개인정보</h2>
     <p>본 앱은 만 14세 미만 아동을 대상으로 하지 않으며, 아동의 개인정보를 의도적으로 수집하지 않습니다. 단식은 성장기 아동·청소년에게 권장되지 않습니다.</p>
 
-    <h2>7. 이용자의 권리</h2>
-    <p>모든 데이터가 이용자의 기기 안에만 있으므로, 이용자는 자신의 정보에 대한 완전한 통제권을 가집니다. 언제든지 앱 내에서 데이터를 확인·수정·삭제할 수 있습니다.</p>
+    <h2>8. 이용자의 권리</h2>
+    <p>이용자는 자신의 정보에 대한 완전한 통제권을 가집니다. 언제든지 앱 내에서 데이터를 확인·수정·삭제할 수 있으며, 로그인한 경우 6장의 방법으로 클라우드 데이터와 계정을 언제든지 삭제할 수 있습니다. 동기화 이용 여부(로그인 여부)도 언제든지 변경할 수 있습니다.</p>
 
-    <h2>8. 방침의 변경</h2>
+    <h2>9. 방침의 변경</h2>
     <p>본 방침은 법령 또는 앱 기능의 변경에 따라 개정될 수 있으며, 변경 시 앱 또는 스토어를 통해 공지합니다.</p>
 
-    <h2>9. 문의처</h2>
+    <h2>10. 문의처</h2>
     <ul>
       <li>개발자: TaeminKim (Taenervini studio)</li>
       <li>이메일: <a href="mailto:taeminkim93@gmail.com">taeminkim93@gmail.com</a></li>
