@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doli — Support / 고객 지원</title>
+<style>
+  :root { --fg:#2b2b2b; --muted:#6b6b6b; --line:#e7e2da; --accent:#e08a4a; --bg:#fffdf9; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",sans-serif;
+    line-height:1.7; -webkit-text-size-adjust:100%; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 20px 80px; }
+  h1 { font-size:1.6rem; margin:.2em 0 .1em; }
+  h2 { font-size:1.15rem; margin:2em 0 .4em; padding-top:.6em; border-top:1px solid var(--line); }
+  h3 { font-size:1rem; margin:1.4em 0 .3em; color:var(--accent); }
+  .meta { color:var(--muted); font-size:.9rem; }
+  ul { padding-left:1.2em; }
+  a { color:var(--accent); word-break:break-all; }
+  .toggle { position:sticky; top:0; background:var(--bg); padding:12px 0; margin:-32px 0 0; border-bottom:1px solid var(--line); z-index:1; }
+  .toggle button { font:inherit; border:1px solid var(--line); background:#fff; color:var(--fg);
+    padding:6px 16px; border-radius:20px; cursor:pointer; margin-right:8px; }
+  .toggle button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+  section { display:none; }
+  section.active { display:block; }
+  .card { background:#faf5ee; border:1px solid var(--line); border-radius:10px; padding:14px 16px; font-size:.94rem; }
+  .contact { font-size:1.05rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="toggle">
+    <button id="btn-en" class="active" onclick="show('en')">English</button>
+    <button id="btn-ko" onclick="show('ko')">한국어</button>
+  </div>
+
+  <!-- ENGLISH -->
+  <section id="en" class="active">
+    <h1>Doli — Support</h1>
+    <p class="meta">Doli: Fasting RPG · Taenervini Studio</p>
+
+    <div class="card contact">
+      <strong>Contact us</strong><br>
+      Email: <a href="mailto:taeminkim93@gmail.com">taeminkim93@gmail.com</a><br>
+      We usually reply within 1–2 business days.
+    </div>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>My fasting timer shows the wrong start time</h3>
+    <p>Tap <em>Adjust start time</em> on the timer screen to set the exact date and time you began. Note that manually adjusting the start time makes that fast ineligible for a gear drop — your fasting record is still kept.</p>
+
+    <h3>I fasted but did not get any gear</h3>
+    <p>Gear drops only after a fast of <strong>8 hours or more</strong>, and only if the start time was not manually adjusted. The rarity depends on how long you fasted — see the drop-rate table in the Gear tab.</p>
+
+    <h3>How do I move my data to a new phone?</h3>
+    <p>Sign in from <em>Settings → Sign in</em> on both devices. Your fasting records, weight, injections and game progress are backed up to the cloud and restored automatically.</p>
+
+    <h3>How do I delete my account and data?</h3>
+    <p>Go to <em>Settings → Delete account &amp; cloud data</em>. This removes your cloud backup and your account link immediately.</p>
+
+    <h3>How do I remove ads?</h3>
+    <p>Purchase the premium option in <em>Settings</em>. If you already paid but ads still appear, use <em>Restore purchases</em>, or contact us with your receipt.</p>
+
+    <h3>Is the diet-injection feature medical advice?</h3>
+    <p><strong>No.</strong> Doli is not a medical device. The GLP-1 logging feature only helps you keep your own records and shows a reference estimate based on published half-lives. It never advises on dosage or timing. Always consult your doctor or pharmacist for any medical decision.</p>
+
+    <h3>Health app (weight) is not syncing</h3>
+    <p>Enable <em>Settings → Health app (weight)</em> in Doli, then check that Doli has read permission for Weight in the iOS Health app (Profile → Apps &amp; Services → Doli).</p>
+
+    <h2>Privacy</h2>
+    <p>See our <a href="./">Privacy Policy</a>.</p>
+  </section>
+
+  <!-- KOREAN -->
+  <section id="ko">
+    <h1>돌리 — 고객 지원</h1>
+    <p class="meta">돌리: 단식 RPG · Taenervini Studio</p>
+
+    <div class="card contact">
+      <strong>문의하기</strong><br>
+      이메일: <a href="mailto:taeminkim93@gmail.com">taeminkim93@gmail.com</a><br>
+      영업일 기준 1~2일 내에 답변드려요.
+    </div>
+
+    <h2>자주 묻는 질문</h2>
+
+    <h3>단식 시작 시각이 잘못 찍혔어요</h3>
+    <p>타이머 화면의 <em>시작 시간 조정</em>에서 실제 시작한 날짜·시각을 직접 넣으면 돼요. 다만 시작 시간을 수동으로 조정하면 그 단식은 장비 드랍 대상에서 제외돼요 (단식 기록 자체는 그대로 남아요).</p>
+
+    <h3>단식했는데 장비가 안 나와요</h3>
+    <p>장비는 <strong>8시간 이상</strong> 단식했을 때, 그리고 시작 시간을 수동 조정하지 않은 경우에만 드랍돼요. 오래 단식할수록 높은 등급이 나올 확률이 올라가요 — 자세한 건 장비 탭의 확률표를 참고해주세요.</p>
+
+    <h3>기기를 바꾸면 기록이 옮겨지나요?</h3>
+    <p>양쪽 기기에서 <em>설정 → 로그인</em>을 하시면 돼요. 단식 기록·체중·주사·게임 진행이 클라우드에 백업돼 자동으로 복원됩니다.</p>
+
+    <h3>계정과 데이터를 지우고 싶어요</h3>
+    <p><em>설정 → 계정 및 클라우드 데이터 삭제</em>에서 삭제할 수 있어요. 클라우드 백업과 계정 연결이 즉시 삭제됩니다.</p>
+
+    <h3>광고를 없애려면?</h3>
+    <p><em>설정</em>에서 프리미엄을 구매하시면 돼요. 이미 결제했는데 광고가 계속 나온다면 <em>구매 복원</em>을 눌러보시고, 그래도 안 되면 영수증과 함께 문의해주세요.</p>
+
+    <h3>다이어트 주사 기능은 의학적 조언인가요?</h3>
+    <p><strong>아니에요.</strong> 돌리는 의료기기가 아닙니다. GLP-1 기록 기능은 스스로 기록을 남기는 도구이고, 공개된 반감기 자료에 근거한 참고용 추정치만 보여줘요. 용량이나 시점을 조언하지 않습니다. 모든 의학적 판단은 반드시 담당 의사·약사와 상의하세요.</p>
+
+    <h3>건강 앱(체중) 연동이 안 돼요</h3>
+    <p>돌리의 <em>설정 → 헬스 앱 연동 (체중)</em>을 켜신 뒤, iOS 건강 앱에서 돌리에게 체중 읽기 권한이 있는지 확인해주세요 (프로필 → 앱 및 서비스 → Doli).</p>
+
+    <h2>개인정보</h2>
+    <p><a href="./">개인정보 처리방침</a>을 확인해주세요.</p>
+  </section>
+</div>
+<script>
+  function show(l) {
+    document.getElementById('en').classList.toggle('active', l === 'en');
+    document.getElementById('ko').classList.toggle('active', l === 'ko');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+    document.getElementById('btn-ko').classList.toggle('active', l === 'ko');
+  }
+  // 브라우저 언어가 한국어면 한국어 먼저
+  if ((navigator.language || '').toLowerCase().startsWith('ko')) show('ko');
+</script>
+</body>
+</html>
